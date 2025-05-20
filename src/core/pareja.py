@@ -1,5 +1,4 @@
 # src/core/pareja.py
-import uuid
 
 class Pareja:
     def __init__(self, id_pareja: str, nombre_participante1: str, nombre_participante2: str, club: str):
