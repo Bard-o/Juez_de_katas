@@ -1,5 +1,3 @@
-# src/core/torneo.py
-
 class Torneo:
     def __init__(self, nombre: str, fecha: str, lugar: str):
         self.nombre = nombre
@@ -18,3 +16,16 @@ class Torneo:
 
     def __str__(self):
         return f"Torneo: {self.nombre}, Fecha: {self.fecha}, Lugar: {self.lugar}"
+
+# Implementación del patrón Factory para Torneo
+class TorneoFactory:
+    @staticmethod
+    def crear_torneo(tipo: str, fecha: str, lugar: str):
+        if tipo.lower() == "regional":
+            return Torneo("Torneo Regional", fecha, lugar)
+        elif tipo.lower() == "nacional":
+            return Torneo("Torneo Nacional", fecha, lugar)
+        elif tipo.lower() == "internacional":
+            return Torneo("Torneo Internacional", fecha, lugar)
+        else:
+            raise ValueError("Tipo de torneo desconocido")
