@@ -7,6 +7,7 @@ from ..core.pareja import Pareja
 from ..core.juez import Juez
 from ..core.tecnica import Tecnica
 from ..core.puntuacion_kata import PuntuacionKata
+import json 
 from ..data.data_manager import DataManager
 from typing import List, Dict
 
@@ -14,12 +15,63 @@ class ConsoleUI:
     def __init__(self):
         self.data_manager = DataManager()
         self.torneo_actual = None
-        # Definición de las técnicas por tipo de Kata (ejemplo)
-        self.config_katas = {
-            "Nage no Kata": ["Te-waza", "Koshi-waza", "Ashi-waza", "Ma-sutemi-waza", "Yoko-sutemi-waza"],
-            "Katame no Kata": ["Osaekomi-waza", "Shime-waza", "Kansetsu-waza"],
-            # Añadir más katas y sus técnicas
-        }
+        self.config_katas = {}
+        self._cargar_config_katas_desde_json()
+
+    def _cargar_config_katas_desde_json(self, katas_dir_path: str = None):
+        """Carga la configuración de las katas y sus técnicas desde archivos JSON."""
+        if katas_dir_path is None:
+            # Asume que la estructura del proyecto es src/ui/console_ui.py y src/data/katas/
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            katas_dir_path = os.path.join(base_dir, 'data', 'katas')
+
+        if not os.path.isdir(katas_dir_path):
+            print(f"Advertencia: El directorio de configuración de katas '{katas_dir_path}' no existe.")
+            return
+
+        for filename in os.listdir(katas_dir_path):
+            if filename.endswith('.json'):
+                filepath = os.path.join(katas_dir_path, filename)
+                try:
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        # Asumimos que cada archivo JSON contiene un diccionario donde las claves son nombres de Kata
+                        # y los valores son listas de nombres de técnicas.
+                        # O que el archivo directamente es el diccionario de un kata específico.
+                        # Ejemplo de estructura de archivo (ej: nage_no_kata.json):
+                        # {
+                        #   "Nage no Kata": ["Te-waza", ...]
+                        # }
+                        # O si el nombre del archivo es el nombre del Kata (ej: Nage no Kata.json)
+                        # y el contenido es la lista de técnicas:
+                        # ["Te-waza", ...]
+                        
+                        # Para este caso, vamos a asumir que el archivo JSON es un diccionario
+                        # que puede contener una o más definiciones de Kata.
+                        if isinstance(data, dict):
+                            for kata_name, tecnicas in data.items():
+                                if isinstance(tecnicas, list) and all(isinstance(t, str) for t in tecnicas):
+                                    if kata_name in self.config_katas:
+                                        print(f"Advertencia: Kata '{kata_name}' del archivo '{filename}' ya está definido. Se sobrescribirá.")
+                                    self.config_katas[kata_name] = tecnicas
+                                else:
+                                    print(f"Advertencia: Formato incorrecto para técnicas de '{kata_name}' en '{filename}'. Se omitirá.")
+                        else:
+                            # Podríamos intentar usar el nombre del archivo como nombre del Kata si el contenido es una lista
+                            # kata_name_from_file = os.path.splitext(filename)[0].replace('_', ' ').title()
+                            # if isinstance(data, list) and all(isinstance(t, str) for t in data):
+                            #    self.config_katas[kata_name_from_file] = data
+                            # else:
+                            print(f"Advertencia: El archivo JSON '{filename}' no tiene el formato esperado (diccionario de katas). Se omitirá.")
+                except json.JSONDecodeError:
+                    print(f"Error al decodificar JSON en el archivo: {filepath}")
+                except IOError as e:
+                    print(f"Error al leer el archivo de configuración de kata '{filepath}': {e}")
+        
+        if not self.config_katas:
+            print("Advertencia: No se cargó ninguna configuración de Kata desde los archivos JSON.")
+        else:
+            print(f"Configuración de Katas cargada: {list(self.config_katas.keys())}")
 
     def limpiar_consola(self):
         """Limpia la consola."""
