@@ -92,8 +92,9 @@ class DataManager:
         }
 
     def _convertir_dict_a_pareja(self, data: Dict[str, Any]) -> Pareja:
-        pareja = Pareja(data['nombre_participante1'], data['nombre_participante2'], data['club'])
-        pareja.id_pareja = data['id_pareja'] # Restaurar ID existente
+        pareja = Pareja(data['id_pareja'], data['nombre_participante1'], data['nombre_participante2'], data['club'])
+        # El ID ya se pasa al constructor, así que la siguiente línea no es necesaria si el constructor lo maneja.
+        # pareja.id_pareja = data['id_pareja'] # Restaurar ID existente
         pareja.puntaje_total = data.get('puntaje_total', 0)
         pareja.errores_tecnicas = data.get('errores_tecnicas', {})
         return pareja

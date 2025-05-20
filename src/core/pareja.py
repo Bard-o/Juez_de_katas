@@ -2,8 +2,8 @@
 import uuid
 
 class Pareja:
-    def __init__(self, nombre_participante1: str, nombre_participante2: str, club: str):
-        self.id_pareja = str(uuid.uuid4())  # Generar un ID único para la pareja
+    def __init__(self, id_pareja: str, nombre_participante1: str, nombre_participante2: str, club: str):
+        self.id_pareja = id_pareja  # Asignar ID proporcionado
         self.nombre_participante1 = nombre_participante1
         self.nombre_participante2 = nombre_participante2
         self.club = club

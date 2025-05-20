@@ -163,10 +163,16 @@ class ConsoleUI:
             return None
 
     def agregar_pareja_a_categoria(self, categoria: Categoria):
+        id_pareja = input("ID de la pareja: ")
+        # Verificar si el ID ya existe en la categoría
+        for p_existente in categoria.parejas:
+            if p_existente.id_pareja == id_pareja:
+                print(f"Error: Ya existe una pareja con el ID '{id_pareja}' en esta categoría.")
+                return
         p1_nombre = input("Nombre del participante 1: ")
         p2_nombre = input("Nombre del participante 2: ")
         club = input("Club de la pareja: ")
-        pareja = Pareja(p1_nombre, p2_nombre, club)
+        pareja = Pareja(id_pareja, p1_nombre, p2_nombre, club)
         categoria.agregar_pareja(pareja)
 
     def registrar_puntuacion_kata(self, categoria: Categoria):
@@ -209,11 +215,6 @@ class ConsoleUI:
 
         for juez_actual in jueces_participantes:
             print(f"\n--- Juez: {juez_actual.nombre} (ID: {juez_actual.id_juez}) --- ")
-            # Aquí se podría pedir el ID del juez para 'loguearlo'
-            # id_juez_login = input(f"Juez {juez_actual.nombre}, ingrese su ID para confirmar: ")
-            # if id_juez_login != juez_actual.id_juez:
-            #     print("ID incorrecto. No se puede continuar con este juez.")
-            #     continue # O manejar de otra forma
 
             evaluaciones_este_juez = []
             for i, tecnica in enumerate(tecnicas_definidas):
@@ -254,9 +255,6 @@ class ConsoleUI:
         
         print("\n--- Resultados de la Kata --- ")
         print(puntuacion)
-        # Guardar el puntaje en la pareja (ya se hace en PuntuacionKata.calcular_puntajes_tecnicas)
-        # Podríamos guardar el objeto PuntuacionKata completo si fuera necesario para auditoría, 
-        # pero por ahora solo el puntaje total en la pareja y los errores.
         pareja_a_evaluar.errores_tecnicas = puntuacion.obtener_errores_totales_por_tecnica()
         print(f"Puntaje total para {pareja_a_evaluar.nombre_participante1} y {pareja_a_evaluar.nombre_participante2}: {pareja_a_evaluar.puntaje_total}")
 
