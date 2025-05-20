@@ -1,4 +1,6 @@
 # src/ui/console_ui.py
+import os
+import platform
 from ..core.torneo import Torneo
 from ..core.categoria import Categoria
 from ..core.pareja import Pareja
@@ -18,6 +20,17 @@ class ConsoleUI:
             "Katame no Kata": ["Osaekomi-waza", "Shime-waza", "Kansetsu-waza"],
             # Añadir más katas y sus técnicas
         }
+
+    def limpiar_consola(self):
+        """Limpia la consola."""
+        if platform.system() == "Windows":
+            os.system('cls')
+        else:
+            os.system('clear')
+
+    def esperar_tecla(self, mensaje="Presione Enter para continuar..."):
+        """Espera a que el usuario presione una tecla."""
+        input(mensaje)
 
     def mostrar_menu_principal(self):
         print("\n--- Sistema de Juzgamiento de Katas de Judo ---")
@@ -257,58 +270,97 @@ class ConsoleUI:
 
     def ejecutar(self):
         while True:
+            self.limpiar_consola()
             opcion_principal = self.mostrar_menu_principal()
+            
             if opcion_principal == '1':
+                self.limpiar_consola()
                 self.crear_nuevo_torneo()
+                self.esperar_tecla()
             elif opcion_principal == '2':
+                self.limpiar_consola()
                 self.cargar_torneo_existente()
+                self.esperar_tecla()
             elif opcion_principal == '3' and self.torneo_actual:
-                self.gestionar_torneo_actual()
+                self.gestionar_torneo_actual() # Ya limpia consola al inicio
             elif opcion_principal == '4' and self.torneo_actual:
+                self.limpiar_consola()
                 self.guardar_torneo_actual()
+                self.esperar_tecla()
             elif opcion_principal == '0':
+                self.limpiar_consola()
                 if self.torneo_actual:
                     guardar = input("¿Desea guardar el torneo actual antes de salir? (s/n): ").lower()
                     if guardar == 's':
                         self.guardar_torneo_actual()
+                        self.esperar_tecla("Torneo guardado. Presione Enter para salir.")
                 print("Saliendo del sistema.")
                 break
             else:
+                self.limpiar_consola()
                 print("Opción no válida.")
+                self.esperar_tecla()
 
     def gestionar_torneo_actual(self):
         while True:
+            self.limpiar_consola()
             opcion_torneo = self.mostrar_menu_torneo()
+
             if opcion_torneo == '1':
+                self.limpiar_consola()
                 self.agregar_categoria_a_torneo()
+                self.esperar_tecla()
             elif opcion_torneo == '2':
+                self.limpiar_consola()
                 self.agregar_juez_a_torneo()
+                self.esperar_tecla()
             elif opcion_torneo == '3':
+                self.limpiar_consola()
                 categoria_seleccionada = self.seleccionar_categoria_para_gestionar()
                 if categoria_seleccionada:
-                    self.gestionar_categoria_actual(categoria_seleccionada)
+                    self.gestionar_categoria_actual(categoria_seleccionada) # Ya limpia consola al inicio
+                else:
+                    self.esperar_tecla() # Si no se seleccionó o no hay categorías
             elif opcion_torneo == '4':
+                self.limpiar_consola()
                 self.ver_info_torneo()
+                self.esperar_tecla()
             elif opcion_torneo == '0':
+                self.limpiar_consola() # Limpia antes de volver al menú principal
                 break
             else:
+                self.limpiar_consola()
                 print("Opción no válida.")
+                self.esperar_tecla()
 
     def gestionar_categoria_actual(self, categoria: Categoria):
         while True:
+            self.limpiar_consola()
             opcion_categoria = self.mostrar_menu_categoria(categoria)
+
             if opcion_categoria == '1':
+                self.limpiar_consola()
                 self.agregar_pareja_a_categoria(categoria)
+                self.esperar_tecla()
             elif opcion_categoria == '2':
+                self.limpiar_consola()
                 self.registrar_puntuacion_kata(categoria)
+                self.esperar_tecla()
             elif opcion_categoria == '3':
+                self.limpiar_consola()
                 self.ver_resultados_categoria(categoria)
+                self.esperar_tecla()
             elif opcion_categoria == '4':
+                self.limpiar_consola()
                 self.ver_info_categoria(categoria)
+                self.esperar_tecla()
             elif opcion_categoria == '0':
+                self.limpiar_consola() # Limpia antes de volver al menú de torneo
                 break
             else:
+                self.limpiar_consola()
                 print("Opción no válida.")
+                self.esperar_tecla()
 
 if __name__ == '__main__':
     # Esto es solo para pruebas rápidas de la UI, el main.py real importará y usará ConsoleUI
