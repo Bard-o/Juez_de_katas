@@ -35,19 +35,6 @@ class ConsoleUI:
                 try:
                     with open(filepath, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-                        # Asumimos que cada archivo JSON contiene un diccionario donde las claves son nombres de Kata
-                        # y los valores son listas de nombres de técnicas.
-                        # O que el archivo directamente es el diccionario de un kata específico.
-                        # Ejemplo de estructura de archivo (ej: nage_no_kata.json):
-                        # {
-                        #   "Nage no Kata": ["Te-waza", ...]
-                        # }
-                        # O si el nombre del archivo es el nombre del Kata (ej: Nage no Kata.json)
-                        # y el contenido es la lista de técnicas:
-                        # ["Te-waza", ...]
-                        
-                        # Para este caso, vamos a asumir que el archivo JSON es un diccionario
-                        # que puede contener una o más definiciones de Kata.
                         if isinstance(data, dict):
                             for kata_name, tecnicas in data.items():
                                 if isinstance(tecnicas, list) and all(isinstance(t, str) for t in tecnicas):
@@ -57,11 +44,6 @@ class ConsoleUI:
                                 else:
                                     print(f"Advertencia: Formato incorrecto para técnicas de '{kata_name}' en '{filename}'. Se omitirá.")
                         else:
-                            # Podríamos intentar usar el nombre del archivo como nombre del Kata si el contenido es una lista
-                            # kata_name_from_file = os.path.splitext(filename)[0].replace('_', ' ').title()
-                            # if isinstance(data, list) and all(isinstance(t, str) for t in data):
-                            #    self.config_katas[kata_name_from_file] = data
-                            # else:
                             print(f"Advertencia: El archivo JSON '{filename}' no tiene el formato esperado (diccionario de katas). Se omitirá.")
                 except json.JSONDecodeError:
                     print(f"Error al decodificar JSON en el archivo: {filepath}")
