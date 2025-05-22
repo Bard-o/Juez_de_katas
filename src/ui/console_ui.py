@@ -1,8 +1,8 @@
 # src/ui/console_ui.py
 import os
 import platform
-from ..core.torneo import Torneo
-from ..core.categoria import Categoria
+from ..core.torneo import Torneo, TorneoFactory
+from ..core.categoria import Categoria, CategoriaFactory
 from ..core.pareja import Pareja
 from ..core.juez import Juez
 from ..core.tecnica import Tecnica
@@ -95,25 +95,20 @@ class ConsoleUI:
         return input("Seleccione una opción: ")
 
     def crear_nuevo_torneo(self):
-        nombre = input("Nombre del torneo: ")
+        print("Tipos de torneo disponibles:")
+        print("1. Regional")
+        print("2. Nacional")
+        print("3. Internacional")
+        tipo_opcion = input("Seleccione el tipo de torneo: ")
+        tipos = {"1": "regional", "2": "nacional", "3": "internacional"}
+        tipo = tipos.get(tipo_opcion)
+        if not tipo:
+            print("Tipo de torneo inválido.")
+            return
         fecha = input("Fecha del torneo (YYYY-MM-DD): ")
         lugar = input("Lugar del torneo: ")
-        self.torneo_actual = Torneo(nombre, fecha, lugar)
-        print(f"Torneo '{nombre}' creado.")
-
-    def cargar_torneo_existente(self):
-        nombre_torneo = input("Nombre del torneo a cargar: ")
-        torneo = self.data_manager.cargar_torneo(nombre_torneo)
-        if torneo:
-            self.torneo_actual = torneo
-        else:
-            print(f"No se pudo cargar el torneo '{nombre_torneo}'.")
-
-    def guardar_torneo_actual(self):
-        if self.torneo_actual:
-            self.data_manager.guardar_torneo(self.torneo_actual)
-        else:
-            print("No hay torneo actual para guardar.")
+        self.torneo_actual = TorneoFactory.crear_torneo(tipo, fecha, lugar)
+        print(f"Torneo '{self.torneo_actual.nombre}' creado.")
 
     def agregar_categoria_a_torneo(self):
         if not self.torneo_actual:
@@ -130,7 +125,7 @@ class ConsoleUI:
             print("Selección de tipo de Kata inválida.")
             return
         
-        categoria = Categoria(nombre_cat, tipo_kata_seleccionado)
+        categoria = CategoriaFactory.crear_categoria(nombre_cat, tipo_kata_seleccionado)
         self.torneo_actual.agregar_categoria(categoria)
 
     def agregar_juez_a_torneo(self):
