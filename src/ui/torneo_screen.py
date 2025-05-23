@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+from .crear_juez_screen import CrearJuezScreen # Importar la nueva pantalla
 import json
 import os
 
@@ -124,7 +125,7 @@ class TorneoScreen:
         for i in self.tree_jueces.get_children():
             self.tree_jueces.delete(i)
         
-        jueces = self.competencia_data.get("jueces", [])
+        jueces = self.competencia_data["jueces"] if self.competencia_data else []
         if not jueces:
             self.tree_jueces.insert("", tk.END, values=("", "No hay jueces registrados", ""))
         else:
@@ -137,7 +138,7 @@ class TorneoScreen:
         for i in self.tree_categorias.get_children():
             self.tree_categorias.delete(i)
 
-        categorias = self.competencia_data.get("categorias", [])
+        categorias = self.competencia_data["categorias"] if self.competencia_data else []
         if not categorias:
             self.tree_categorias.insert("", tk.END, text="No hay categorías registradas")
         else:
@@ -166,10 +167,9 @@ class TorneoScreen:
         # Y luego se necesitaría un método para recargar los datos y la UI: self.recargar_datos_y_ui()
 
     def abrir_pantalla_añadir_juez(self):
-        # Aquí se llamaría a la pantalla para añadir/editar juez
-        messagebox.showinfo("Próximamente", "Pantalla para añadir juez aún no implementada.", parent=self.top_level)
-        # Ejemplo: CrearJuezScreen(self.top_level, self, self.competencia_path)
-        # Y luego: self.recargar_datos_y_ui()
+        # Llama a la pantalla para añadir/editar juez
+        CrearJuezScreen(self.top_level, self, self.competencia_path)
+        # La recarga de datos y UI se maneja desde CrearJuezScreen al guardar exitosamente.
 
     def recargar_datos_y_ui(self):
         self._cargar_datos_competencia() # Recarga los datos del JSON
