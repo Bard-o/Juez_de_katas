@@ -14,6 +14,7 @@ def main():
     """Función principal para iniciar la aplicación de administrador."""
     root = tk.Tk()
     app = AdminMenu(root)
+    root.state('zoomed') # Maximizar la ventana
     root.mainloop()
 
 if __name__ == "__main__":

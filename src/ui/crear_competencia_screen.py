@@ -12,7 +12,7 @@ class CrearCompetenciaScreen:
         self.admin_menu_instance = admin_menu_instance # Guardar referencia al menú principal
         self.top_level = tk.Toplevel(root)
         self.top_level.title("Crear Nueva Competencia")
-        self.top_level.geometry("600x400")
+        self.top_level.state('zoomed') # Maximizar la ventana
         self.top_level.grab_set() # Hacer esta ventana modal
         self.top_level.protocol("WM_DELETE_WINDOW", self.cerrar_ventana) # Manejar cierre
 
@@ -21,28 +21,43 @@ class CrearCompetenciaScreen:
         style.configure("TButton", padding=10, font=('Helvetica', 10))
         style.configure("Header.TLabel", font=('Helvetica', 14, 'bold'))
 
-        main_frame = ttk.Frame(self.top_level, padding="20")
-        main_frame.pack(expand=True, fill=tk.BOTH)
+        # Frame principal que se expande con la ventana
+        main_frame_expansible = ttk.Frame(self.top_level, style="Dark.TFrame") # Aplicar estilo para el fondo
+        main_frame_expansible.pack(fill=tk.BOTH, expand=True)
 
-        titulo_label = ttk.Label(main_frame, text="Formulario de Nueva Competencia", style="Header.TLabel")
+        # Estilo para el frame principal oscuro (si no se hereda o se quiere asegurar)
+        # Si el estilo ya está definido en la ventana raíz (root) y self.top_level es un Toplevel de esa raíz,
+        # podría no ser necesario redefinirlo aquí si el estilo es global.
+        # Pero para asegurar, o si self.top_level tiene su propio Style() object, se puede añadir:
+        style = ttk.Style(self.top_level) # Asegurarse que el estilo se aplica a esta ventana
+        style.configure("Dark.TFrame", background="#dadada") # Gris oscuro
+        
+        # Configurar el grid del frame expansible para centrar el content_container
+        main_frame_expansible.columnconfigure(0, weight=1)
+        main_frame_expansible.rowconfigure(0, weight=1)
+        
+        # Contenedor para el contenido real, con un ancho máximo
+        content_container = ttk.Frame(main_frame_expansible, padding="20", width=700) # Ancho deseado
+        content_container.grid(row=0, column=0, sticky="") # Centrado
+
+        titulo_label = ttk.Label(content_container, text="Formulario de Nueva Competencia", style="Header.TLabel")
         titulo_label.pack(pady=(0, 20))
 
-        # Aquí irían los campos del formulario (nombre, fecha, etc.)
-        # Ejemplo:
-        ttk.Label(main_frame, text="Nombre de la Competencia:").pack(anchor=tk.W, pady=(5,0))
-        self.nombre_entry = ttk.Entry(main_frame, width=40)
+        # Aquí irían los campos del formulario (nombre, fecha, etc.) - ahora dentro de content_container
+        ttk.Label(content_container, text="Nombre de la Competencia:").pack(anchor=tk.W, pady=(5,0))
+        self.nombre_entry = ttk.Entry(content_container, width=40)
         self.nombre_entry.pack(fill=tk.X, pady=(0,10))
 
-        ttk.Label(main_frame, text="Fecha (YYYY-MM-DD):").pack(anchor=tk.W, pady=(5,0))
-        self.fecha_entry = ttk.Entry(main_frame, width=40)
+        ttk.Label(content_container, text="Fecha (YYYY-MM-DD):").pack(anchor=tk.W, pady=(5,0))
+        self.fecha_entry = ttk.Entry(content_container, width=40)
         self.fecha_entry.pack(fill=tk.X, pady=(0,10))
 
-        ttk.Label(main_frame, text="Lugar de la Competencia:").pack(anchor=tk.W, pady=(5,0))
-        self.lugar_entry = ttk.Entry(main_frame, width=40)
+        ttk.Label(content_container, text="Lugar de la Competencia:").pack(anchor=tk.W, pady=(5,0))
+        self.lugar_entry = ttk.Entry(content_container, width=40)
         self.lugar_entry.pack(fill=tk.X, pady=(0,10))
 
-        # Botones
-        botones_frame = ttk.Frame(main_frame)
+        # Botones - ahora dentro de content_container
+        botones_frame = ttk.Frame(content_container)
         botones_frame.pack(fill=tk.X, pady=(20,0))
 
         btn_guardar = ttk.Button(botones_frame, text="Guardar Competencia", command=self.guardar_competencia)
@@ -115,6 +130,7 @@ class CrearCompetenciaScreen:
         if not abrir_torneo_screen:
             self.top_level.destroy()
             if self.admin_menu_instance and hasattr(self.admin_menu_instance, 'root') and self.admin_menu_instance.root.winfo_exists():
+                self.admin_menu_instance.root.state('zoomed') # Set main window to maximized state
                 self.admin_menu_instance.root.deiconify() # Mostrar ventana principal de nuevo
         else:
             # Este caso es manejado directamente en guardar_competencia para pasar la ruta_archivo

@@ -7,24 +7,35 @@ class AdminMenu:
     def __init__(self, root):
         self.root = root
         self.root.title("Menú Principal - Administrador")
-        self.root.geometry("800x600")
+        self.root.state('zoomed') # Maximizar la ventana
 
         # Configurar el estilo para los botones
         style = ttk.Style()
         style.configure("TButton", padding=10, font=('Helvetica', 12))
         style.configure("Title.TLabel", font=('Helvetica', 18, 'bold'))
 
-        # Frame principal
-        main_frame = ttk.Frame(self.root, padding="20 20 20 20")
-        main_frame.pack(expand=True, fill=tk.BOTH)
+        # Frame principal que se expande con la ventana
+        main_frame_expansible = ttk.Frame(self.root, style="Dark.TFrame") # Aplicar estilo para el fondo
+        main_frame_expansible.pack(fill=tk.BOTH, expand=True)
 
-        # Título centrado
-        titulo_label = ttk.Label(main_frame, text="Bienvenido al Sistema de Juzgamiento", style="Title.TLabel")
+        # Estilo para el frame principal oscuro
+        style.configure("Dark.TFrame", background="#dadada") # Gris oscuro
+        
+        # Configurar el grid del frame expansible para centrar el content_container
+        main_frame_expansible.columnconfigure(0, weight=1)
+        main_frame_expansible.rowconfigure(0, weight=1)
+        
+        # Contenedor para el contenido real, con un ancho máximo
+        content_container = ttk.Frame(main_frame_expansible, padding="20 20 20 20", width=700) # Ancho deseado
+        content_container.grid(row=0, column=0, sticky="") # Centrado
+
+        # Título centrado - ahora dentro de content_container
+        titulo_label = ttk.Label(content_container, text="Bienvenido al Sistema de Juzgamiento", style="Title.TLabel")
         titulo_label.pack(pady=(20, 40))
 
-        # Frame para los botones, para centrarlos
-        botones_frame = ttk.Frame(main_frame)
-        botones_frame.pack(expand=True)
+        # Frame para los botones, para centrarlos - ahora dentro de content_container
+        botones_frame = ttk.Frame(content_container)
+        botones_frame.pack(expand=True) # Se expandirá dentro del content_container
 
         # Botón "Crear competencia nuevo"
         btn_crear = ttk.Button(botones_frame, text="Crear Competencia Nueva", 
@@ -35,6 +46,11 @@ class AdminMenu:
         btn_abrir = ttk.Button(botones_frame, text="Abrir Competencia Existente", 
                                command=self.abrir_lista_competencias, style="TButton", width=30)
         btn_abrir.pack(pady=20)
+
+        # Configurar para que los elementos dentro de content_container se centren si el contenedor es más grande
+        content_container.columnconfigure(0, weight=1) # No estrictamente necesario si solo usamos pack para centrar botones_frame
+        # content_container.rowconfigure(0, weight=1) # Para el título
+        # content_container.rowconfigure(1, weight=1) # Para botones_frame, si se usa grid
 
     def abrir_crear_competencia(self):
         self.root.withdraw() # Ocultar la ventana principal

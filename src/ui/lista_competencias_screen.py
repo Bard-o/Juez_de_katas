@@ -11,7 +11,7 @@ class ListaCompetenciasScreen:
         self.admin_menu_instance = admin_menu_instance
         self.top_level = tk.Toplevel(root)
         self.top_level.title("Abrir Competencia Existente")
-        self.top_level.geometry("700x500")
+        self.top_level.state('zoomed') # Maximizar la ventana
         self.top_level.grab_set()
         self.top_level.protocol("WM_DELETE_WINDOW", self.cerrar_ventana)
 
@@ -20,14 +20,28 @@ class ListaCompetenciasScreen:
         style.configure("Header.TLabel", font=('Helvetica', 14, 'bold'))
         style.configure("Treeview.Heading", font=('Helvetica', 10, 'bold'))
 
-        main_frame = ttk.Frame(self.top_level, padding="20")
-        main_frame.pack(expand=True, fill=tk.BOTH)
+        # Frame principal que se expande con la ventana
+        main_frame_expansible = ttk.Frame(self.top_level, style="Dark.TFrame") # Aplicar estilo para el fondo
+        main_frame_expansible.pack(fill=tk.BOTH, expand=True)
 
-        titulo_label = ttk.Label(main_frame, text="Seleccionar Competencia", style="Header.TLabel")
+        # Estilo para el frame principal oscuro
+        # Similar a crear_competencia_screen, asegurar que el estilo se aplique.
+        style = ttk.Style(self.top_level) # Asegurarse que el estilo se aplica a esta ventana
+        style.configure("Dark.TFrame", background="#dadada") # Gris oscuro
+        
+        # Configurar el grid del frame expansible para centrar el content_container
+        main_frame_expansible.columnconfigure(0, weight=1)
+        main_frame_expansible.rowconfigure(0, weight=1)
+        
+        # Contenedor para el contenido real, con un ancho máximo
+        content_container = ttk.Frame(main_frame_expansible, padding="20", width=800) # Ancho deseado
+        content_container.grid(row=0, column=0, sticky="") # Centrado
+
+        titulo_label = ttk.Label(content_container, text="Seleccionar Competencia", style="Header.TLabel")
         titulo_label.pack(pady=(0, 20))
 
-        # Treeview para mostrar las competencias
-        tree_frame = ttk.Frame(main_frame)
+        # Treeview para mostrar las competencias - ahora dentro de content_container
+        tree_frame = ttk.Frame(content_container)
         tree_frame.pack(expand=True, fill=tk.BOTH, pady=(0,10))
 
         self.tree = ttk.Treeview(tree_frame, columns=("nombre", "fecha_modificacion"), show="headings")
@@ -44,9 +58,13 @@ class ListaCompetenciasScreen:
 
         self.cargar_competencias()
 
-        # Botones
-        botones_frame = ttk.Frame(main_frame)
+        # Botones - ahora dentro de content_container
+        botones_frame = ttk.Frame(content_container)
         botones_frame.pack(fill=tk.X, pady=(10,0))
+
+        # Configurar para que el tree_frame (y por ende el treeview) se expanda dentro del content_container
+        content_container.rowconfigure(1, weight=1) # Para que tree_frame se expanda verticalmente
+        content_container.columnconfigure(0, weight=1) # Para que tree_frame se expanda horizontalmente
 
         btn_abrir = ttk.Button(botones_frame, text="Abrir Seleccionada", command=self.abrir_competencia)
         btn_abrir.pack(side=tk.RIGHT, padx=(10,0))
@@ -119,6 +137,7 @@ class ListaCompetenciasScreen:
     def cerrar_ventana(self):
         self.top_level.destroy()
         if self.admin_menu_instance and hasattr(self.admin_menu_instance, 'root') and self.admin_menu_instance.root.winfo_exists():
+            self.admin_menu_instance.root.state('zoomed') # Set main window to maximized state
             self.admin_menu_instance.root.deiconify()
 
 if __name__ == "__main__":
