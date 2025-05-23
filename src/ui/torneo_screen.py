@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from .crear_juez_screen import CrearJuezScreen # Importar la nueva pantalla
+from .crear_juez_screen import CrearJuezScreen
+from .crear_pareja_screen import CrearParejaScreen # Nueva importación # Importar la nueva pantalla
+from .crear_categoria_screen import CrearCategoriaScreen # Importar la pantalla de crear categoría
 import json
 import os
 
@@ -69,6 +71,9 @@ class TorneoScreen:
         # Botones de acción - ahora dentro de content_container
         botones_frame = ttk.Frame(content_container)
         botones_frame.pack(fill=tk.X, pady=(0, 10))
+
+        btn_add_pareja = ttk.Button(botones_frame, text="Añadir Pareja", command=self.abrir_pantalla_añadir_pareja)
+        btn_add_pareja.pack(side=tk.LEFT, padx=(0, 10))
 
         btn_add_categoria = ttk.Button(botones_frame, text="Añadir Categoría", command=self.abrir_pantalla_añadir_categoria)
         btn_add_categoria.pack(side=tk.LEFT, padx=(0, 10))
@@ -161,10 +166,14 @@ class TorneoScreen:
                                                 values=(club_pareja, id_pareja))
 
     def abrir_pantalla_añadir_categoria(self):
-        # Aquí se llamaría a la pantalla para añadir/editar categoría
-        messagebox.showinfo("Próximamente", "Pantalla para añadir categoría aún no implementada.", parent=self.top_level)
-        # Ejemplo: CrearCategoriaScreen(self.top_level, self, self.competencia_path)
-        # Y luego se necesitaría un método para recargar los datos y la UI: self.recargar_datos_y_ui()
+        # Llama a la pantalla para añadir categoría
+        CrearCategoriaScreen(self.top_level, self, self.competencia_path)
+        # La recarga de datos y UI se maneja desde CrearCategoriaScreen al guardar exitosamente.
+
+    def abrir_pantalla_añadir_pareja(self):
+        # Llama a la pantalla para añadir pareja
+        CrearParejaScreen(self.top_level, self, self.competencia_path)
+        # La recarga de datos y UI se maneja desde CrearParejaScreen al guardar exitosamente.
 
     def abrir_pantalla_añadir_juez(self):
         # Llama a la pantalla para añadir/editar juez
