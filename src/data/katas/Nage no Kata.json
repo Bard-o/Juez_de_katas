@@ -1,20 +1,45 @@
 {
-    "Nage no Kata": [
-      "Uki-otoshi",
-      "Seoi-nage",
-      "Kata-guruma",
-      "Uki-goshi",
-      "Harai-goshi",
-      "Tsurikomi-goshi",
-      "Okuri-ashi-harai",
-      "Sasae-tsurikomi-ashi",
-      "Uchi-mata",
-      "Tomoe-nage",
-      "Ura-nage",
-      "Sumi-gaeshi",
-      "Yoko-gake",
-      "Yoko-guruma",
-      "Uki-waza"
+    "nombre": "Nage no Kata",
+    "tecnicas": [
+        {
+            "nombre_grupo": "Te-waza",
+            "sub_tecnicas": [
+                {"nombre": "Uki-otoshi"},
+                {"nombre": "Ippon-seoi-nage"},
+                {"nombre": "Kata-guruma"}
+            ]
+        },
+        {
+            "nombre_grupo": "Koshi-waza",
+            "sub_tecnicas": [
+                {"nombre": "Uki-goshi"},
+                {"nombre": "Harai-goshi"},
+                {"nombre": "Tsurikomi-goshi"}
+            ]
+        },
+        {
+            "nombre_grupo": "Ashi-waza",
+            "sub_tecnicas": [
+                {"nombre": "Okuri-ashi-harai"},
+                {"nombre": "Sasae-tsurikomi-ashi"},
+                {"nombre": "Uchi-mata"}
+            ]
+        },
+        {
+            "nombre_grupo": "Ma-sutemi-waza",
+            "sub_tecnicas": [
+                {"nombre": "Tomoe-nage"},
+                {"nombre": "Ura-nage"},
+                {"nombre": "Sumi-gaeshi"}
+            ]
+        },
+        {
+            "nombre_grupo": "Yoko-sutemi-waza",
+            "sub_tecnicas": [
+                {"nombre": "Yoko-gake"},
+                {"nombre": "Yoko-guruma"},
+                {"nombre": "Uki-waza"}
+            ]
+        }
     ]
-  }
-  
+}

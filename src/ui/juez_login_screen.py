@@ -146,30 +146,37 @@ class JuezLoginScreen:
                                 parent=self.top_level)
             # Aquí se abriría la siguiente pantalla para el juez
             # Por ahora, cerramos esta y podríamos pasar self.selected_juez_info
-            # self.abrir_menu_principal_juez() # Implementar esta función
-            print(f"Juez seleccionado: {self.selected_juez_info}")
-            # self.cerrar_ventana() # Opcional, depende del flujo deseado
+            self.abrir_menu_principal_juez()
         else:
             messagebox.showwarning("Selección Inválida", "Por favor, seleccione un juez específico, no una competencia.", parent=self.top_level)
 
-    # def abrir_menu_principal_juez(self):
-    #     if self.selected_juez_info:
-    #         # Ocultar esta ventana
-    #         self.top_level.withdraw()
-    #         # Crear y mostrar la pantalla principal del juez
-    #         # Ejemplo: JuezMainScreen(self.root, self.selected_juez_info, self)
-    #         print(f"Abriría el menú principal para el juez: {self.selected_juez_info['id_juez']}")
-    #     else:
-    #         messagebox.showerror("Error", "No se ha seleccionado ningún juez.", parent=self.top_level)
+    def abrir_menu_principal_juez(self):
+        if self.selected_juez_info:
+            # Importar JuezMainScreen aquí para evitar dependencia circular a nivel de módulo si fuera el caso
+            # y porque solo se necesita en este punto.
+            from .juez_main_screen import JuezMainScreen 
+            self.top_level.withdraw() # Ocultar la pantalla de login
+            JuezMainScreen(self.root, self.selected_juez_info, self) # Pasar self como login_screen_instance
+        else:
+            messagebox.showerror("Error", "No se ha seleccionado ningún juez para continuar.", parent=self.top_level)
 
     def cerrar_ventana(self):
         self.top_level.destroy()
         # Si esta pantalla fue llamada desde otra, se podría reactivar la anterior
         # if self.calling_instance:
         #     self.calling_instance.reactivate()
-        # Por ahora, si es la pantalla principal de juez, podría cerrar la app o volver al login general.
+        # Si esta ventana se cierra (ej. por la 'X'), y es la que maneja la app principal, cerrar todo.
         if self.root.winfo_exists(): # Asegurarse que la raíz existe
-             self.root.destroy() # Cierra la aplicación si esta es la ventana principal
+             self.root.destroy() 
+
+    def reactivate_login_screen(self):
+        """Método para ser llamado por JuezMainScreen al cerrar sesión."""
+        self.top_level.deiconify()
+        self.top_level.state('zoomed')
+        self.top_level.grab_set()
+        self.selected_juez_info = None # Resetear selección
+        # Opcional: recargar jueces si pudieran haber cambiado, aunque no es común desde el menú de juez.
+        # self.cargar_competencias_y_jueces()
 
 if __name__ == '__main__':
     # Crear el directorio data_storage si no existe para pruebas
