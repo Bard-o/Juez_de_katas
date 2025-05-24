@@ -5,10 +5,10 @@ import os
 
 
 PENALIZACIONES = {
-    "pequeno1": 0.5,
-    "pequeno2": 0.5, # Si se marcan ambos, sería -1.0 en total por pequeños
-    "mediano": 1.0,
-    "grande": 3.0,
+    "pequeno1": 1.0,
+    "pequeno2": 1.0, # Si se marcan ambos, sería -1.0 en total por pequeños
+    "mediano": 3.0,
+    "grande": 5.0,
     "olvidada": 10.0
 }
 PUNTAJE_BASE_TECNICA = 10.0
@@ -137,9 +137,9 @@ class EvaluacionKataScreen:
             # Radiobuttons para compensación
             comp_frame = ttk.Frame(scrollable_frame, style="Content.TFrame")
             comp_frame.grid(row=i, column=6)
-            ttk.Radiobutton(comp_frame, text="-0.5", variable=eval_data['compensacion'], value=-0.5).pack(side=tk.LEFT)
-            ttk.Radiobutton(comp_frame, text="0", variable=eval_data['compensacion'], value=0.0).pack(side=tk.LEFT)
             ttk.Radiobutton(comp_frame, text="+0.5", variable=eval_data['compensacion'], value=0.5).pack(side=tk.LEFT)
+            ttk.Radiobutton(comp_frame, text="0", variable=eval_data['compensacion'], value=0.0).pack(side=tk.LEFT)
+            ttk.Radiobutton(comp_frame, text="-0.5", variable=eval_data['compensacion'], value=-0.5).pack(side=tk.LEFT)
 
             # Label para puntaje de técnica
             ttk.Label(scrollable_frame, textvariable=eval_data['puntaje_var'], style="Bold.TLabel", background="#dadada").grid(row=i, column=7, padx=5)
@@ -211,29 +211,53 @@ class EvaluacionKataScreen:
             with open(self.pareja_info['ruta_competencia'], 'r+', encoding='utf-8') as f:
                 competencia_data = json.load(f)
                 
-                # Encontrar la categoría y la pareja
+               # pal debuggeo
+                #print(f"Searching for category: {self.pareja_info['nombre_categoria']}")
+                #print(f"Searching for pareja ID: {self.pareja_info['id_pareja']}")
+                
                 found_pareja = False
                 for cat in competencia_data.get('categorias', []):
-                    if cat.get('nombre_categoria') == self.pareja_info['nombre_categoria']:
+                    # print(f"Checking category: {cat.get('nombre_categoria')}")
+                    
+                    # Ensure exact string comparison
+                    if str(cat.get('nombre_categoria')).strip() == str(self.pareja_info['nombre_categoria']).strip():
                         for p in cat.get('parejas', []):
-                            if p.get('id_pareja') == self.pareja_info['id_pareja']:
-                                # Añadir o actualizar la evaluación del juez
+                            #print(f"Checking pareja: {p.get('id_pareja')}")
+                            
+                            # Ensure exact string comparison for IDs
+                            if str(p.get('id_pareja')).strip() == str(self.pareja_info['id_pareja']).strip():
                                 if 'evaluaciones_jueces' not in p:
                                     p['evaluaciones_jueces'] = []
                                 
-                                # Remover evaluación previa del mismo juez para la misma kata si existe
+                                # Reescribe si ya existe
                                 p['evaluaciones_jueces'] = [
                                     ev for ev in p['evaluaciones_jueces'] 
-                                    if not (ev.get('id_juez') == evaluacion_final_juez['id_juez'] and 
-                                            ev.get('nombre_kata_evaluado') == evaluacion_final_juez['nombre_kata_evaluado'])
+                                    if not (str(ev.get('id_juez')) == str(evaluacion_final_juez['id_juez']) and 
+                                          str(ev.get('nombre_kata_evaluado')) == str(evaluacion_final_juez['nombre_kata_evaluado']))
                                 ]
+                                
                                 p['evaluaciones_jueces'].append(evaluacion_final_juez)
                                 found_pareja = True
+                                print("Found and updated pareja!")
                                 break
-                    if found_pareja: break
+                        
+                    if found_pareja:
+                        break
                 
                 if not found_pareja:
-                    messagebox.showerror("Error", "No se encontró la pareja en el archivo de competencia.", parent=self.top_level)
+                    error_msg = (
+                        "No se encontró la pareja en el archivo de competencia.\n"
+                        f"Categoría buscada: '{self.pareja_info['nombre_categoria']}'\n"
+                        f"ID Pareja buscado: '{self.pareja_info['id_pareja']}'\n"
+                        "Categorías disponibles:\n"
+                    )
+                    for cat in competencia_data.get('categorias', []):
+                        error_msg += f"- {cat.get('nombre_categoria')}\n"
+                        error_msg += "  Parejas:\n"
+                        for p in cat.get('parejas', []):
+                            error_msg += f"    * ID: {p.get('id_pareja')}\n"
+                    
+                    messagebox.showerror("Error", error_msg, parent=self.top_level)
                     return
 
                 f.seek(0)
