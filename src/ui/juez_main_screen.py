@@ -40,8 +40,8 @@ class JuezMainScreen:
         style.configure("SubHeader.TLabel", font=('Helvetica', 12, 'italic'))
         style.configure("Treeview.Heading", font=('Helvetica', 10, 'bold'))
         style.configure("TButton", padding=10, font=('Helvetica', 10))
-        style.configure("Dark.TFrame", background="#333333") # Fondo gris oscuro
-        style.configure("Content.TFrame", background="#dadada") # Fondo gris claro para el contenido
+        style.configure("Dark.TFrame", background="#dadada") # Fondo gris oscuro
+        style.configure("Content.TFrame", background="#ffffff") # Fondo gris claro para el contenido
 
         # Frame principal expansible con fondo oscuro
         main_frame_expansible = ttk.Frame(self.top_level, style="Dark.TFrame")
@@ -60,13 +60,13 @@ class JuezMainScreen:
         info_frame.grid(row=0, column=0, sticky="ew", pady=(0, 20))
         info_frame.columnconfigure(0, weight=1)
 
-        titulo_label = ttk.Label(info_frame, text=f"Juez: {self.juez_info['nombre_juez']} ({self.juez_info['id_juez']}) - Club: {self.juez_info['club_juez']}", style="Header.TLabel", background="#dadada")
+        titulo_label = ttk.Label(info_frame, text=f"Juez: {self.juez_info['nombre_juez']} ({self.juez_info['id_juez']}) - Club: {self.juez_info['club_juez']}", style="Header.TLabel", background="#ffffff")
         titulo_label.pack()
-        subtitulo_label = ttk.Label(info_frame, text=f"Torneo: {self.competencia_data.get('nombre', 'N/A')}", style="SubHeader.TLabel", background="#dadada")
+        subtitulo_label = ttk.Label(info_frame, text=f"Torneo: {self.competencia_data.get('nombre', 'N/A')}", style="SubHeader.TLabel", background="#ffffff")
         subtitulo_label.pack()
 
         # Treeview para categorías y parejas
-        tree_label = ttk.Label(content_container, text="Seleccione una pareja para evaluar:", font=('Helvetica', 11), background="#dadada")
+        tree_label = ttk.Label(content_container, text="Seleccione una pareja para evaluar:", font=('Helvetica', 11), background="#ffffff")
         tree_label.grid(row=1, column=0, sticky="w", pady=(0,5))
 
         tree_frame = ttk.Frame(content_container) # No necesita estilo Content.TFrame si el content_container ya lo tiene

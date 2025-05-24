@@ -18,7 +18,7 @@ class EvaluacionKataScreen:
         self.root = root
         self.pareja_info = pareja_info # Contiene info de la pareja, categoría, juez, ruta_competencia
         self.juez_main_screen_instance = juez_main_screen_instance
-        self.kata_tecnicas = []
+        self.kata_estructura = [] # Cambiado para almacenar la estructura completa con grupos
         self.evaluaciones_tecnicas_actuales = {} # {nombre_tecnica: {errores: {}, compensacion: 0, puntaje: 10.0}}
 
         self.top_level = tk.Toplevel(root)
@@ -32,21 +32,14 @@ class EvaluacionKataScreen:
         self._crear_interfaz()
 
     def _cargar_tecnicas_kata(self):
-        # Ejemplo: self.pareja_info['tipo_kata_categoria'] podría ser 'Nage no Kata'
-        # Debería haber un archivo como 'Nage no Kata.json' en src/data/katas/
         nombre_kata_archivo = f"{self.pareja_info['tipo_kata_categoria']}.json"
         ruta_archivo_kata = os.path.join(os.path.dirname(__file__), '..', 'data', 'katas', nombre_kata_archivo)
         try:
             with open(ruta_archivo_kata, 'r', encoding='utf-8') as f:
                 data_kata = json.load(f)
-                # Asumiendo que el JSON tiene una lista de técnicas bajo una clave como "tecnicas"
-                # Y cada técnica es un objeto con "nombre" y opcionalmente "sub_tecnicas"
-                for grupo_tecnica in data_kata.get('tecnicas', []):
-                    for sub_tecnica in grupo_tecnica.get('sub_tecnicas', []):
-                        self.kata_tecnicas.append(sub_tecnica['nombre'])
-            if not self.kata_tecnicas:
+                self.kata_estructura = data_kata.get('tecnicas', []) # Almacenar la estructura completa
+            if not self.kata_estructura:
                  messagebox.showwarning("Sin Técnicas", f"No se encontraron técnicas para {self.pareja_info['tipo_kata_categoria']}. Verifique el archivo.", parent=self.top_level)
-                 # self.cerrar_y_volver() # Podría ser una opción
         except FileNotFoundError:
             messagebox.showerror("Error", f"Archivo de kata no encontrado: {nombre_kata_archivo}", parent=self.top_level)
             self.cerrar_y_volver()
@@ -55,38 +48,56 @@ class EvaluacionKataScreen:
             self.cerrar_y_volver()
 
     def _inicializar_evaluaciones(self):
-        for tecnica_nombre in self.kata_tecnicas:
-            self.evaluaciones_tecnicas_actuales[tecnica_nombre] = {
-                'errores': {
-                    'pequeno1': tk.BooleanVar(value=False),
-                    'pequeno2': tk.BooleanVar(value=False),
-                    'mediano': tk.BooleanVar(value=False),
-                    'grande': tk.BooleanVar(value=False),
-                    'olvidada': tk.BooleanVar(value=False)
-                },
-                'compensacion': tk.DoubleVar(value=0.0),
-                'puntaje_var': tk.DoubleVar(value=PUNTAJE_BASE_TECNICA)
-            }
-            # Conectar la actualización del puntaje a los cambios en errores y compensación
-            for error_var in self.evaluaciones_tecnicas_actuales[tecnica_nombre]['errores'].values():
-                error_var.trace_add("write", lambda *args, tn=tecnica_nombre: self._actualizar_puntaje_tecnica(tn))
-            self.evaluaciones_tecnicas_actuales[tecnica_nombre]['compensacion'].trace_add("write", lambda *args, tn=tecnica_nombre: self._actualizar_puntaje_tecnica(tn))
+        for grupo_tecnica in self.kata_estructura:
+            for sub_tecnica in grupo_tecnica.get('sub_tecnicas', []):
+                tecnica_nombre = sub_tecnica['nombre']
+                self.evaluaciones_tecnicas_actuales[tecnica_nombre] = {
+                    'errores': {
+                        'pequeno1': tk.BooleanVar(value=False),
+                        'pequeno2': tk.BooleanVar(value=False),
+                        'mediano': tk.BooleanVar(value=False),
+                        'grande': tk.BooleanVar(value=False),
+                        'olvidada': tk.BooleanVar(value=False)
+                    },
+                    'compensacion': tk.DoubleVar(value=0.0),
+                    'puntaje_var': tk.DoubleVar(value=PUNTAJE_BASE_TECNICA)
+                }
+                for error_var in self.evaluaciones_tecnicas_actuales[tecnica_nombre]['errores'].values():
+                    error_var.trace_add("write", lambda *args, tn=tecnica_nombre: self._actualizar_puntaje_tecnica(tn))
+                self.evaluaciones_tecnicas_actuales[tecnica_nombre]['compensacion'].trace_add("write", lambda *args, tn=tecnica_nombre: self._actualizar_puntaje_tecnica(tn))
 
     def _crear_interfaz(self):
         style = ttk.Style(self.top_level)
-        style.configure("Header.TLabel", font=('Helvetica', 14, 'bold'))
-        style.configure("SubHeader.TLabel", font=('Helvetica', 11))
-        style.configure("Bold.TLabel", font=('Helvetica', 10, 'bold'))
-        style.configure("Dark.TFrame", background="#333333")
-        style.configure("Content.TFrame", background="#dadada")
+        style.configure("Header.TLabel", font=('Helvetica', 14, 'bold'), background="#ffffff") # Asegurar fondo blanco para header
+        style.configure("SubHeader.TLabel", font=('Helvetica', 11), background="#ffffff") # Asegurar fondo blanco para subheader
+        style.configure("Bold.TLabel", font=('Helvetica', 10, 'bold'), background="#ffffff") # Asegurar fondo blanco para labels bold
+        style.configure("GroupHeader.TLabel", font=('Helvetica', 12, 'bold'), background="#ffffff") # Estilo para subtítulos de grupo
+        style.configure("Background.TFrame", background="#dadada") # Fondo general de la ventana
+        style.configure("Content.TFrame", background="#ffffff") # Fondo del cuadro de contenido
+        style.configure("Content.TCheckbutton", background="#ffffff")
+        style.configure("Content.TRadiobutton", background="#ffffff")
 
-        main_frame_expansible = ttk.Frame(self.top_level, style="Dark.TFrame")
+        # Frame principal expansible con fondo #dadada
+        main_frame_expansible = ttk.Frame(self.top_level, style="Background.TFrame")
         main_frame_expansible.pack(fill=tk.BOTH, expand=True)
-        main_frame_expansible.columnconfigure(0, weight=1)
-        main_frame_expansible.rowconfigure(1, weight=1) # Para el canvas
+        main_frame_expansible.grid_rowconfigure(0, weight=1)
+        main_frame_expansible.grid_columnconfigure(0, weight=1)
 
-        # Header Info
-        header_frame = ttk.Frame(main_frame_expansible, style="Content.TFrame", padding="10")
+        # Contenedor para el contenido real, centrado y con fondo blanco
+        content_width = 1000  # Ajustar según necesidad para las columnas
+        content_height = 700 # Ajustar según necesidad
+
+        content_container = ttk.Frame(main_frame_expansible, style="Content.TFrame", padding="20", width=content_width, height=content_height)
+        content_container.grid(row=0, column=0, sticky="") # Centrado
+        content_container.grid_propagate(False) # Evitar que el frame cambie de tamaño
+
+        content_container.columnconfigure(0, weight=1)
+        content_container.rowconfigure(0, weight=0) # Header Info
+        content_container.rowconfigure(1, weight=1) # Canvas para técnicas
+        content_container.rowconfigure(2, weight=0) # Botón Enviar
+
+        # Header Info dentro del content_container
+        header_frame = ttk.Frame(content_container, style="Content.TFrame", padding="10")
         header_frame.grid(row=0, column=0, sticky="ew")
         info_text = (
             f"Juez: {self.pareja_info['juez_info']['nombre_juez']} ({self.pareja_info['juez_info']['id_juez']}) - "
@@ -95,21 +106,40 @@ class EvaluacionKataScreen:
             f"Club Pareja: {self.pareja_info['club']}\n"
             f"Categoría: {self.pareja_info['nombre_categoria']} - Kata: {self.pareja_info['tipo_kata_categoria']}"
         )
-        ttk.Label(header_frame, text=info_text, style="SubHeader.TLabel", background="#dadada", justify=tk.LEFT).pack(fill=tk.X)
+        ttk.Label(header_frame, text=info_text, style="SubHeader.TLabel", justify=tk.LEFT).pack(fill=tk.X)
 
-        # Canvas y Scrollbar para la lista de técnicas
-        canvas_frame = ttk.Frame(main_frame_expansible, style="Content.TFrame")
-        canvas_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=(0,10))
+        # Canvas y Scrollbar para la lista de técnicas, dentro del content_container
+        canvas_frame = ttk.Frame(content_container, style="Content.TFrame") # Usar Content.TFrame para el fondo blanco
+        canvas_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=(10,10))
         canvas_frame.columnconfigure(0, weight=1)
         canvas_frame.rowconfigure(0, weight=1)
 
-        canvas = tk.Canvas(canvas_frame, bg="#dadada", highlightthickness=0)
+        canvas = tk.Canvas(canvas_frame, bg="#ffffff", highlightthickness=0) # Canvas con fondo blanco
         scrollbar = ttk.Scrollbar(canvas_frame, orient="vertical", command=canvas.yview)
-        scrollable_frame = ttk.Frame(canvas, style="Content.TFrame") # Frame interior
+        scrollable_frame = ttk.Frame(canvas, style="Content.TFrame") # Frame interior con fondo blanco
 
         scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
         canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
         canvas.configure(yscrollcommand=scrollbar.set)
+
+        # --- Habilitar scroll con rueda del ratón --- 
+        def _on_mousewheel(event):
+            # Para Windows y MacOS
+            if event.num == 4: # Rueda hacia arriba en Linux
+                canvas.yview_scroll(-1, "units")
+            elif event.num == 5: # Rueda hacia abajo en Linux
+                canvas.yview_scroll(1, "units")
+            else: # Para Windows y MacOS
+                 canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+
+        # Vincular para diferentes plataformas
+        canvas.bind_all("<MouseWheel>", _on_mousewheel) # Windows
+        canvas.bind_all("<Button-4>", _on_mousewheel)   # Linux (rueda arriba)
+        canvas.bind_all("<Button-5>", _on_mousewheel)   # Linux (rueda abajo)
+        # Para MacOS, <MouseWheel> debería funcionar, pero a veces se necesita <Option-MouseWheel> o similar
+        # si el comportamiento por defecto es horizontal. Tkinter maneja esto de forma un poco diferente
+        # entre versiones y OS. El bind_all a <MouseWheel> es el más común.
+        # --- Fin de habilitar scroll con rueda del ratón ---
 
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
@@ -117,39 +147,53 @@ class EvaluacionKataScreen:
         # Encabezados de la tabla de técnicas
         headers = ["Técnica", "Err. Peq. 1", "Err. Peq. 2", "Err. Med.", "Err. Gra.", "Olvidada", "Compensación", "Puntaje"]
         for col, header_text in enumerate(headers):
-            ttk.Label(scrollable_frame, text=header_text, style="Bold.TLabel", padding=(5,2), background="#dadada").grid(row=0, column=col, sticky="ew", padx=2)
+            ttk.Label(scrollable_frame, text=header_text, style="Bold.TLabel", padding=(5,2)).grid(row=0, column=col, sticky="ew", padx=2)
 
-        # Filas de técnicas
-        if not self.kata_tecnicas:
-            ttk.Label(scrollable_frame, text="No hay técnicas cargadas para esta kata.", background="#dadada").grid(row=1, column=0, columnspan=len(headers), pady=10)
-        
-        for i, tecnica_nombre in enumerate(self.kata_tecnicas, start=1):
-            eval_data = self.evaluaciones_tecnicas_actuales[tecnica_nombre]
-            ttk.Label(scrollable_frame, text=tecnica_nombre, background="#dadada", wraplength=150).grid(row=i, column=0, sticky="w", padx=5)
+        # Filas de técnicas con subtítulos de grupo
+        current_row = 1
+        if not self.kata_estructura:
+            ttk.Label(scrollable_frame, text="No hay técnicas cargadas para esta kata.", style="SubHeader.TLabel").grid(row=current_row, column=0, columnspan=len(headers), pady=10)
+            current_row += 1
+        else:
+            for grupo_tecnica in self.kata_estructura:
+                nombre_grupo = grupo_tecnica.get('nombre_grupo', 'Grupo Desconocido')
+                ttk.Label(scrollable_frame, text=nombre_grupo, style="GroupHeader.TLabel").grid(row=current_row, column=0, columnspan=len(headers), sticky="w", pady=(10,2), padx=5)
+                current_row += 1
+                
+                sub_tecnicas_del_grupo = grupo_tecnica.get('sub_tecnicas', [])
+                if not sub_tecnicas_del_grupo:
+                    ttk.Label(scrollable_frame, text=" (No hay técnicas en este grupo)", style="SubHeader.TLabel").grid(row=current_row, column=0, columnspan=len(headers), sticky="w", padx=20)
+                    current_row +=1
+                else:
+                    for sub_tecnica in sub_tecnicas_del_grupo:
+                        tecnica_nombre = sub_tecnica['nombre']
+                        eval_data = self.evaluaciones_tecnicas_actuales[tecnica_nombre]
+                        ttk.Label(scrollable_frame, text=tecnica_nombre, wraplength=150, style="SubHeader.TLabel").grid(row=current_row, column=0, sticky="w", padx=20) # Indentado
 
-            # Checkboxes para errores
-            ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['pequeno1']).grid(row=i, column=1)
-            ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['pequeno2']).grid(row=i, column=2)
-            ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['mediano']).grid(row=i, column=3)
-            ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['grande']).grid(row=i, column=4)
-            ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['olvidada']).grid(row=i, column=5)
+                        # Checkboxes para errores
+                        ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['pequeno1'], style="Content.TCheckbutton").grid(row=current_row, column=1)
+                        ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['pequeno2'], style="Content.TCheckbutton").grid(row=current_row, column=2)
+                        ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['mediano'], style="Content.TCheckbutton").grid(row=current_row, column=3)
+                        ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['grande'], style="Content.TCheckbutton").grid(row=current_row, column=4)
+                        ttk.Checkbutton(scrollable_frame, variable=eval_data['errores']['olvidada'], style="Content.TCheckbutton").grid(row=current_row, column=5)
 
-            # Radiobuttons para compensación
-            comp_frame = ttk.Frame(scrollable_frame, style="Content.TFrame")
-            comp_frame.grid(row=i, column=6)
-            ttk.Radiobutton(comp_frame, text="+0.5", variable=eval_data['compensacion'], value=0.5).pack(side=tk.LEFT)
-            ttk.Radiobutton(comp_frame, text="0", variable=eval_data['compensacion'], value=0.0).pack(side=tk.LEFT)
-            ttk.Radiobutton(comp_frame, text="-0.5", variable=eval_data['compensacion'], value=-0.5).pack(side=tk.LEFT)
+                        # Radiobuttons para compensación
+                        comp_frame = ttk.Frame(scrollable_frame, style="Content.TFrame")
+                        comp_frame.grid(row=current_row, column=6)
+                        ttk.Radiobutton(comp_frame, text="+0.5", variable=eval_data['compensacion'], value=0.5, style="Content.TRadiobutton").pack(side=tk.LEFT)
+                        ttk.Radiobutton(comp_frame, text="0", variable=eval_data['compensacion'], value=0.0, style="Content.TRadiobutton").pack(side=tk.LEFT)
+                        ttk.Radiobutton(comp_frame, text="-0.5", variable=eval_data['compensacion'], value=-0.5, style="Content.TRadiobutton").pack(side=tk.LEFT)
 
-            # Label para puntaje de técnica
-            ttk.Label(scrollable_frame, textvariable=eval_data['puntaje_var'], style="Bold.TLabel", background="#dadada").grid(row=i, column=7, padx=5)
+                        # Label para puntaje de técnica
+                        ttk.Label(scrollable_frame, textvariable=eval_data['puntaje_var'], style="Bold.TLabel").grid(row=current_row, column=7, padx=5)
+                        current_row += 1
 
-        # Botón de Enviar
-        footer_frame = ttk.Frame(main_frame_expansible, style="Content.TFrame", padding="10")
-        footer_frame.grid(row=2, column=0, sticky="ew")
+        # Botón de Enviar, dentro del content_container
+        footer_frame = ttk.Frame(content_container, style="Content.TFrame", padding="10")
+        footer_frame.grid(row=2, column=0, sticky="s", pady=(10,0)) # Alineado al sur (abajo)
         self.btn_enviar = ttk.Button(footer_frame, text="Enviar Resultados", command=self._enviar_resultados)
         self.btn_enviar.pack(pady=5)
-        if not self.kata_tecnicas:
+        if not self.kata_estructura: # Cambiado de self.kata_tecnicas
             self.btn_enviar.config(state=tk.DISABLED)
 
     def _actualizar_puntaje_tecnica(self, tecnica_nombre):
