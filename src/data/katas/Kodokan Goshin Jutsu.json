@@ -1,0 +1,36 @@
+{
+  "nombre": "Kodokan Goshin Jutsu",
+  "tecnicas": [
+      {
+          "nombre_grupo": "Técnicas sin armas (Toshu-no-bu)",
+          "sub_tecnicas": [
+              {"nombre": "Ryote-dori"},
+              {"nombre": "Hidari-eri-dori"},
+              {"nombre": "Migi-eri-dori"},
+              {"nombre": "Kata-ude-dori"},
+              {"nombre": "Ushiro-eri-dori"},
+              {"nombre": "Ushiro-dori"},
+              {"nombre": "Kakae-dori"},
+              {"nombre": "Naname-uchi"},
+              {"nombre": "Ago-tsuki"},
+              {"nombre": "Gammen-tsuki"},
+              {"nombre": "Mae-geri"},
+              {"nombre": "Yoko-geri"}
+          ]
+      },
+      {
+          "nombre_grupo": "Técnicas contra arma (Buki-no-bu)",
+          "sub_tecnicas": [
+              {"nombre": "Dori (cuchillo) - Tsukkake"},
+              {"nombre": "Dori (cuchillo) - Yokotsuki"},
+              {"nombre": "Dori (cuchillo) - Kirikomi"},
+              {"nombre": "Shomen-zuke (pistola al frente)"},
+              {"nombre": "Koshi-gamae (pistola a la cintura)"},
+              {"nombre": "Haimen-zuke (pistola por la espalda)"},
+              {"nombre": "Furiage (palo de arriba hacia abajo)"},
+              {"nombre": "Furioroshi (palo de arriba con ambas manos)"},
+              {"nombre": "Morote-tsuki (empuje con palo)"}
+          ]
+      }
+  ]
+}

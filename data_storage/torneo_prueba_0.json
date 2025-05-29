@@ -1,0 +1,1962 @@
+{
+    "nombre": "Prueba_0",
+    "fecha": "2025-05-12",
+    "lugar": "Pereira",
+    "categorias": [
+        {
+            "nombre_categoria": "Nague Junior",
+            "tipo_kata": "Nage no Kata",
+            "parejas": [
+                {
+                    "id_pareja": "1",
+                    "nombre_participante1": "Diego Londoño",
+                    "nombre_participante2": "Diego Caicedo",
+                    "club": "RIS",
+                    "puntaje_total": 0,
+                    "errores_tecnicas": {}
+                },
+                {
+                    "id_pareja": "2",
+                    "nombre_participante1": "Ramiro Alvarez",
+                    "nombre_participante2": "Devid Zea",
+                    "club": "UTP",
+                    "puntaje_total": 0,
+                    "errores_tecnicas": {}
+                }
+            ]
+        },
+        {
+            "nombre_categoria": "Katame Mayores",
+            "tipo_kata": "Katame no Kata",
+            "parejas": [
+                {
+                    "id_pareja": "3",
+                    "nombre_participante1": "Camilo Guevara",
+                    "nombre_participante2": "Daniel Osorio",
+                    "club": "PER",
+                    "puntaje_total": 0,
+                    "errores_tecnicas": {},
+                    "evaluaciones_jueces": [
+                        {
+                            "id_juez": 1,
+                            "nombre_juez": "Harold",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 8.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 8.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": true,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 5.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 138.0
+                        },
+                        {
+                            "id_juez": 2,
+                            "nombre_juez": "Margarita",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 8.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 5.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 6.5
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": true,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 4.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 118.5
+                        },
+                        {
+                            "id_juez": 3,
+                            "nombre_juez": "Mondragón",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 6.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 8.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 131.5
+                        },
+                        {
+                            "id_juez": 4,
+                            "nombre_juez": "Pocholo",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": true,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 4.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 130.0
+                        },
+                        {
+                            "id_juez": 5,
+                            "nombre_juez": "Wilson",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 6.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": true,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 5.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 129.0
+                        }
+                    ]
+                },
+                {
+                    "id_pareja": "4",
+                    "nombre_participante1": "Simón Londoño",
+                    "nombre_participante2": "Esteban Pulgarín",
+                    "club": "MZL",
+                    "puntaje_total": 0,
+                    "errores_tecnicas": {},
+                    "evaluaciones_jueces": [
+                        {
+                            "id_juez": 1,
+                            "nombre_juez": "Harold",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 142.5
+                        },
+                        {
+                            "id_juez": 2,
+                            "nombre_juez": "Margarita",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 8.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 132.0
+                        },
+                        {
+                            "id_juez": 3,
+                            "nombre_juez": "Mondragón",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 6.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 6.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": true,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 5.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 125.5
+                        },
+                        {
+                            "id_juez": 4,
+                            "nombre_juez": "Pocholo",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 7.0
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 10.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.0,
+                                    "puntaje_asignado_juez": 9.0
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 131.0
+                        },
+                        {
+                            "id_juez": 5,
+                            "nombre_juez": "Wilson",
+                            "nombre_kata_evaluado": "Katame no Kata",
+                            "tecnicas": [
+                                {
+                                    "nombre_tecnica": "Kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-kesa-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 8.5
+                                },
+                                {
+                                    "nombre_tecnica": "Yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kuzure-yoko-shiho-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Hadaka-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Okuri-eri-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": -0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Kata-ha-jime",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 8.5
+                                },
+                                {
+                                    "nombre_tecnica": "Gyaku-juji-jime",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-garami",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-juji-gatame",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 7.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-ude-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": true,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 6.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ude-hishigi-hiza-gatame",
+                                    "errores": {
+                                        "pequeno1": true,
+                                        "pequeno2": false,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                },
+                                {
+                                    "nombre_tecnica": "Ashi-garami",
+                                    "errores": {
+                                        "pequeno1": false,
+                                        "pequeno2": true,
+                                        "mediano": false,
+                                        "grande": false,
+                                        "olvidada": false
+                                    },
+                                    "compensacion": 0.5,
+                                    "puntaje_asignado_juez": 9.5
+                                }
+                            ],
+                            "puntaje_total_juez_para_kata": 131.5
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "jueces": [
+        {
+            "id_juez": "1",
+            "nombre": "Harold",
+            "club": "RIS"
+        },
+        {
+            "id_juez": "2",
+            "nombre": "Margarita",
+            "club": "CAL"
+        },
+        {
+            "id_juez": "3",
+            "nombre": "Mondragón",
+            "club": "VAL"
+        },
+        {
+            "id_juez": "4",
+            "nombre": "Pocholo",
+            "club": "VAL"
+        },
+        {
+            "id_juez": "5",
+            "nombre": "Wilson",
+            "club": "BOG"
+        }
+    ]
+}

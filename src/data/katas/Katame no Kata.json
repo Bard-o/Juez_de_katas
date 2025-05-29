@@ -1,0 +1,35 @@
+{
+  "nombre": "Katame no Kata",
+  "tecnicas": [
+      {
+          "nombre_grupo": "Osaekomi-waza",
+          "sub_tecnicas": [
+              {"nombre": "Kesa-gatame"},
+              {"nombre": "Kuzure-kesa-gatame"},
+              {"nombre": "Kata-gatame"},
+              {"nombre": "Yoko-shiho-gatame"},
+              {"nombre": "Kuzure-yoko-shiho-gatame"}
+          ]
+      },
+      {
+          "nombre_grupo": "Shime-waza",
+          "sub_tecnicas": [
+              {"nombre": "Kata-juji-jime"},
+              {"nombre": "Hadaka-jime"},
+              {"nombre": "Okuri-eri-jime"},
+              {"nombre": "Kata-ha-jime"},
+              {"nombre": "Gyaku-juji-jime"}
+          ]
+      },
+      {
+          "nombre_grupo": "Kansetsu-waza",
+          "sub_tecnicas": [
+              {"nombre": "Ude-garami"},
+              {"nombre": "Ude-hishigi-juji-gatame"},
+              {"nombre": "Ude-hishigi-ude-gatame"},
+              {"nombre": "Ude-hishigi-hiza-gatame"},
+              {"nombre": "Ashi-garami"}
+          ]
+      }
+  ]
+}
