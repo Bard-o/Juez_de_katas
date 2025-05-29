@@ -1,0 +1,28 @@
+{
+    "nombre": "Competencia de la sustentación",
+    "fecha": "2025-05-29",
+    "lugar": "PER",
+    "categorias": [
+        {
+            "nombre_categoria": "Estudiantes",
+            "tipo_kata": "Nage no Kata",
+            "parejas": [
+                {
+                    "id_pareja": "P001",
+                    "nombre_participante1": "simon",
+                    "nombre_participante2": "seba",
+                    "club": "UTP",
+                    "puntaje_total": 0,
+                    "evaluaciones_jueces": []
+                }
+            ]
+        }
+    ],
+    "jueces": [
+        {
+            "id_juez": "J001",
+            "nombre": "Ramiro Andres Varrios Balencia",
+            "club": "Electronica"
+        }
+    ]
+}

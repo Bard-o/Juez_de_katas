@@ -52,23 +52,21 @@ class TorneoScreen:
         main_frame_expansible = ttk.Frame(self.top_level, style="Dark.TFrame") # Aplicar estilo para el fondo
         main_frame_expansible.pack(fill=tk.BOTH, expand=True)
 
-        # Estilo para el frame principal oscuro
-        # Asegurar que el estilo se aplique a esta ventana Toplevel.
         style.configure("Dark.TFrame", background="#dadada") # Gris oscuro
         
-        # Configurar el grid del frame expansible para centrar el content_container
+        
         main_frame_expansible.columnconfigure(0, weight=1)
         main_frame_expansible.rowconfigure(0, weight=1)
         
-        # Contenedor para el contenido real, con un ancho máximo
+        
         content_container = ttk.Frame(main_frame_expansible, padding="20", width=900) # Ancho deseado
         content_container.grid(row=0, column=0, sticky="") # Centrado
 
-        # Título del Torneo - ahora dentro de content_container
+       
         titulo_label = ttk.Label(content_container, text=f"Torneo: {self.competencia_data.get('nombre', 'Desconocido')}", style="Header.TLabel")
         titulo_label.pack(pady=(0, 20))
 
-        # Botones de acción - ahora dentro de content_container
+       
         botones_frame = ttk.Frame(content_container)
         botones_frame.pack(fill=tk.X, pady=(0, 10))
 
@@ -98,9 +96,9 @@ class TorneoScreen:
         btn_volver = ttk.Button(bottom_frame, text="Volver al Menú Principal", command=self.cerrar_ventana)
         btn_volver.pack(side=tk.LEFT)
 
-        # Configurar para que el paned_window se expanda dentro del content_container
-        content_container.rowconfigure(2, weight=1) # Asumiendo que el título es fila 0, botones_frame fila 1, paned_window fila 2
-        content_container.columnconfigure(0, weight=1) # Para que los elementos internos se expandan horizontalmente
+        
+        content_container.rowconfigure(2, weight=1) 
+        content_container.columnconfigure(0, weight=1) 
 
 
         # Frame para Jueces
@@ -253,53 +251,3 @@ class TorneoScreen:
         else:
             messagebox.showerror("Error", "No se pudo encontrar los datos de la categoría seleccionada.", parent=self.top_level)
 
-if __name__ == "__main__":
-    # Para probar esta pantalla de forma aislada
-    # Crear un archivo JSON de prueba en data_storage
-    test_data_dir = os.path.join(os.path.dirname(__file__), "..", "..", "data_storage")
-    if not os.path.exists(test_data_dir):
-        os.makedirs(test_data_dir)
-    
-    test_competencia_file = os.path.join(test_data_dir, "competencia_prueba_torneo_screen.json")
-    test_data = {
-        "nombre": "Torneo de Prueba para Pantalla",
-        "fecha": "2024-07-30",
-        "lugar": "Gimnasio Virtual",
-        "jueces": [
-            {"id_juez": "J001", "nombre": "Ana Pérez", "club": "Club Sol"},
-            {"id_juez": "J002", "nombre": "Luis Gómez", "club": "Club Luna"}
-        ],
-        "categorias": [
-            {
-                "nombre_categoria": "Kata Infantil", 
-                "tipo_kata": "Kihon Kata", 
-                "parejas": [
-                    {"id_pareja": "P001", "p1_nombre": "Carlos", "p2_nombre": "Laura", "club": "Club Sol"},
-                    {"id_pareja": "P002", "p1_nombre": "Pedro", "p2_nombre": "Sofía", "club": "Club Luna"}
-                ]
-            },
-            {
-                "nombre_categoria": "Kata Adultos", 
-                "tipo_kata": "Nage No Kata", 
-                "parejas": [
-                    {"id_pareja": "P003", "p1_nombre": "Miguel", "p2_nombre": "Elena", "club": "Club Estrella"}
-                ]
-            }
-        ]
-    }
-    with open(test_competencia_file, 'w', encoding='utf-8') as f:
-        json.dump(test_data, f, indent=4, ensure_ascii=False)
-
-    root_test = tk.Tk()
-    # root_test.withdraw() # Ocultar la ventana raíz si se va a mostrar solo el Toplevel
-    # Para que el Toplevel funcione correctamente, la raíz no debe estar oculta inmediatamente si es la única ventana.
-    # O, si se oculta, asegurarse de que el mainloop se maneje correctamente.
-    
-    # Simular que admin_menu_instance es la ventana raíz para el deiconify
-    class MockAdminMenu:
-        def __init__(self, r):
-            self.root = r
-
-    mock_admin = MockAdminMenu(root_test)
-    app = TorneoScreen(root_test, mock_admin, test_competencia_file)
-    root_test.mainloop()

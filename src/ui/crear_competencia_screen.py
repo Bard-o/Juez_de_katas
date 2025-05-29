@@ -2,14 +2,14 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import os
 import json
-from src.core.torneo import Torneo  # Importar la clase Torneo
-from src.ui.torneo_screen import TorneoScreen # Importar la pantalla de torneo
+from src.core.torneo import Torneo  
+from src.ui.torneo_screen import TorneoScreen 
 
 DATA_STORAGE_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data_storage")
 
 class CrearCompetenciaScreen:
     def __init__(self, root, admin_menu_instance):
-        self.admin_menu_instance = admin_menu_instance # Guardar referencia al menú principal
+        self.admin_menu_instance = admin_menu_instance 
         self.top_level = tk.Toplevel(root)
         self.top_level.title("Crear Nueva Competencia")
         self.top_level.state('zoomed') # Maximizar la ventana
@@ -25,18 +25,15 @@ class CrearCompetenciaScreen:
         main_frame_expansible = ttk.Frame(self.top_level, style="Dark.TFrame") # Aplicar estilo para el fondo
         main_frame_expansible.pack(fill=tk.BOTH, expand=True)
 
-        # Estilo para el frame principal oscuro (si no se hereda o se quiere asegurar)
-        # Si el estilo ya está definido en la ventana raíz (root) y self.top_level es un Toplevel de esa raíz,
-        # podría no ser necesario redefinirlo aquí si el estilo es global.
-        # Pero para asegurar, o si self.top_level tiene su propio Style() object, se puede añadir:
-        style = ttk.Style(self.top_level) # Asegurarse que el estilo se aplica a esta ventana
+        
+        style = ttk.Style(self.top_level)
         style.configure("Dark.TFrame", background="#dadada") # Gris oscuro
         
-        # Configurar el grid del frame expansible para centrar el content_container
+        
         main_frame_expansible.columnconfigure(0, weight=1)
         main_frame_expansible.rowconfigure(0, weight=1)
         
-        # Contenedor para el contenido real, con un ancho máximo
+        
         content_container = ttk.Frame(main_frame_expansible, padding="20", width=700) # Ancho deseado
         content_container.grid(row=0, column=0, sticky="") # Centrado
 
@@ -117,10 +114,8 @@ class CrearCompetenciaScreen:
             with open(ruta_archivo, 'w', encoding='utf-8') as f:
                 json.dump(competencia_data, f, indent=4, ensure_ascii=False)
             messagebox.showinfo("Éxito", f"Competencia '{nombre}' guardada correctamente en {ruta_archivo}.", parent=self.top_level)
-            # Abrir la pantalla del torneo recién creado
             self.top_level.withdraw() # Ocultar esta ventana
             TorneoScreen(self.admin_menu_instance.root if self.admin_menu_instance else self.top_level.master, self.admin_menu_instance, ruta_archivo)
-            # No llamar a self.cerrar_ventana() aquí, ya que TorneoScreen manejará el flujo
         except IOError as e:
             messagebox.showerror("Error al Guardar", f"No se pudo guardar el archivo de la competencia: {e}", parent=self.top_level)
         except Exception as e:
@@ -135,11 +130,3 @@ class CrearCompetenciaScreen:
         else:
             # Este caso es manejado directamente en guardar_competencia para pasar la ruta_archivo
             pass
-
-if __name__ == "__main__":
-    # Esto es solo para probar esta pantalla de forma aislada
-    # En la aplicación real, se llamaría desde admin_menu.py
-    root_test = tk.Tk()
-    root_test.withdraw() # Ocultar la ventana raíz principal de prueba
-    app = CrearCompetenciaScreen(root_test, None) # Pasar None como admin_menu_instance para prueba
-    root_test.mainloop()

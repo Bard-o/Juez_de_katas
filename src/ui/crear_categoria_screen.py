@@ -3,10 +3,6 @@ from tkinter import ttk, messagebox
 import json
 import os
 
-# Asumimos que Categoria y CategoriaFactory están en src.core.categoria
-# Esto es solo para referencia de la estructura de datos, no se usará directamente para la creación
-# from ..core.categoria import Categoria, CategoriaFactory 
-
 KATAS_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "katas")
 
 class CrearCategoriaScreen:
@@ -122,49 +118,4 @@ class CrearCategoriaScreen:
     def cerrar_ventana(self):
         self.top_level.destroy()
 
-if __name__ == "__main__":
-    # Ejemplo de uso (requiere una ventana raíz y datos de prueba)
-    root = tk.Tk()
-    root.withdraw() # Ocultar la ventana raíz principal para este ejemplo
-
-    # Crear un archivo de competencia de prueba
-    test_competencia_path = os.path.join(os.path.dirname(__file__), "..", "..", "data_storage", "test_competencia_categorias.json")
-    if not os.path.exists(os.path.dirname(test_competencia_path)):
-        os.makedirs(os.path.dirname(test_competencia_path))
-    
-    test_data = {
-        "nombre": "Competencia de Prueba para Categorías",
-        "fecha": "2023-01-01",
-        "lugar": "Test Lugar",
-        "categorias": [],
-        "jueces": []
-    }
-    with open(test_competencia_path, 'w', encoding='utf-8') as f:
-        json.dump(test_data, f, indent=4)
-
-    # Crear directorios y archivos de katas de prueba si no existen
-    if not os.path.exists(KATAS_PATH):
-        os.makedirs(KATAS_PATH)
-    if not os.path.exists(os.path.join(KATAS_PATH, "nague.json")):
-        with open(os.path.join(KATAS_PATH, "nague.json"), 'w') as kf: kf.write("{}")
-    if not os.path.exists(os.path.join(KATAS_PATH, "katame.json")):
-        with open(os.path.join(KATAS_PATH, "katame.json"), 'w') as kf: kf.write("{}")
-
-    # Simular una instancia de TorneoScreen (solo para el método recargar_datos_y_ui)
-    class MockTorneoScreen:
-        def recargar_datos_y_ui(self):
-            print("MockTorneoScreen: recargar_datos_y_ui() llamado")
-            # Aquí se podría recargar y mostrar el archivo JSON para verificar
-            try:
-                with open(test_competencia_path, 'r', encoding='utf-8') as f_check:
-                    data = json.load(f_check)
-                    print("Datos actualizados en el archivo:")
-                    print(json.dumps(data, indent=2))
-            except Exception as e_check:
-                print(f"Error al leer el archivo de prueba: {e_check}")
-
-    mock_torneo_screen = MockTorneoScreen()
-
-    # Crear y mostrar la pantalla
-    app = CrearCategoriaScreen(root, mock_torneo_screen, test_competencia_path)
-    root.mainloop()
+  

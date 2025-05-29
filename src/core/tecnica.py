@@ -4,8 +4,6 @@ class Tecnica:
     def __init__(self, nombre_tecnica: str, puntaje_base: float = 10.0):
         self.nombre_tecnica = nombre_tecnica
         self.puntaje_base = puntaje_base
-        # Los errores se registrarán por juez
-        # Ejemplo: self.errores_por_juez = {'juez_id_1': {'pequeno': 0, 'mediano': 0, 'grande': 0, 'olvidada': False, 'compensacion': 0.0}}
         self.errores_por_juez = {}
 
     def registrar_evaluacion_juez(self, id_juez: str, errores: dict, compensacion: float):

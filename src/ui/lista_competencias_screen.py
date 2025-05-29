@@ -85,8 +85,6 @@ class ListaCompetenciasScreen:
 
         try:
             archivos = [f for f in os.listdir(DATA_STORAGE_PATH) if os.path.isfile(os.path.join(DATA_STORAGE_PATH, f))]
-            # Asumimos que los archivos de competencia son .json o algún formato específico
-            # Por ahora, listaremos todos los archivos. Se podría filtrar por extensión.
             if not archivos:
                 self.tree.insert("", tk.END, values=("No hay competencias guardadas.", ""))
                 return
@@ -96,8 +94,7 @@ class ListaCompetenciasScreen:
                 try:
                     timestamp = os.path.getmtime(ruta_completa)
                     fecha_mod = tk.StringVar()
-                    fecha_mod.set(str(os.path.getmtime(ruta_completa))) # Placeholder, se puede formatear mejor
-                    # Convertir timestamp a formato legible
+                    fecha_mod.set(str(os.path.getmtime(ruta_completa))) 
                     from datetime import datetime
                     fecha_mod_str = datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
                     self.tree.insert("", tk.END, values=(archivo, fecha_mod_str))

@@ -6,7 +6,7 @@ import os
 class JuezMainScreen:
     def __init__(self, root, juez_info, login_screen_instance):
         self.root = root
-        self.juez_info = juez_info  # {'ruta_competencia': ..., 'id_juez': ..., 'nombre_juez': ..., 'club_juez': ...}
+        self.juez_info = juez_info  
         self.login_screen_instance = login_screen_instance
         self.competencia_data = None
         self.selected_pareja_info = None
@@ -205,69 +205,3 @@ class JuezMainScreen:
         self._cargar_categorias_y_parejas_tree() # Recargar por si hubo cambios
 
 
-if __name__ == '__main__':
-    # --- Mockups para prueba --- 
-    class MockLoginScreen:
-        def __init__(self, r):
-            self.root = r
-            self.top_level = tk.Toplevel(r)
-            self.top_level.title("Mock Login")
-            self.top_level.withdraw() # Inicia oculta
-        
-        def reactivate(self):
-            print("MockLoginScreen reactivado")
-            self.top_level.deiconify()
-
-    mock_juez_info = {
-        'ruta_competencia': 'c:/Users/pc/Documents/2.Universidad/2025-1/PRG-IV/Proyecto_Final/data_storage/torneo_primavera.json',
-        'id_juez': 'J001',
-        'nombre_juez': 'Ana Pérez',
-        'club_juez': 'Club Sol Naciente'
-    }
-
-    # Asegurar que el archivo de competencia exista para la prueba
-    DATA_STORAGE_PATH_TEST = os.path.join(os.path.dirname(__file__), "..", "..", "data_storage")
-    if not os.path.exists(DATA_STORAGE_PATH_TEST):
-        os.makedirs(DATA_STORAGE_PATH_TEST)
-    
-    mock_competencia_path = mock_juez_info['ruta_competencia']
-    if not os.path.exists(mock_competencia_path):
-        ejemplo_comp_data = {
-            "nombre": "Torneo de Primavera (Test)",
-            "fecha": "2024-05-10",
-            "lugar": "Gimnasio Central",
-            "jueces": [
-                {"id_juez": "J001", "nombre": "Ana Pérez", "club": "Club Sol Naciente"},
-                {"id_juez": "J002", "nombre": "Luis García", "club": "Dojo Imperial"}
-            ],
-            "categorias": [
-                {
-                    "nombre_categoria": "Infantil A - Nage No Kata", 
-                    "tipo_kata": "Nage No Kata",
-                    "parejas": [
-                        {"id_pareja": "P001", "nombre_participante1": "Carlos Solis", "nombre_participante2": "Laura Luna", "club": "Club Fénix"},
-                        {"id_pareja": "P002", "nombre_participante1": "Pedro Roca", "nombre_participante2": "Maria Estrella", "club": "Club Dragón"}
-                    ]
-                },
-                {
-                    "nombre_categoria": "Juvenil B - Katame No Kata", 
-                    "tipo_kata": "Katame No Kata",
-                    "parejas": [
-                        {"id_pareja": "P003", "nombre_participante1": "Elena Montes", "nombre_participante2": "Juan Ríos", "club": "Academia Samurái"}
-                    ]
-                }
-            ]
-        }
-        try:
-            with open(mock_competencia_path, 'w', encoding='utf-8') as f:
-                json.dump(ejemplo_comp_data, f, indent=4)
-            print(f"Archivo de competencia mock creado en {mock_competencia_path}")
-        except Exception as e:
-            print(f"Error creando archivo mock: {e}")
-            # Si no se puede crear, la prueba podría fallar al cargar datos.
-
-    root_test = tk.Tk()
-    # root_test.withdraw() # No ocultar la raíz si es la única ventana que podría quedar
-    mock_login = MockLoginScreen(root_test)
-    app = JuezMainScreen(root_test, mock_juez_info, mock_login)
-    root_test.mainloop()

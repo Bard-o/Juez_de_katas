@@ -137,11 +137,8 @@ class JuezLoginScreen:
         item_tags = item_data.get('tags')
         item_values = item_data.get('values')
 
-        # Un juez es un hijo de una competencia, y tendrá tags
-        # Ahora tags tiene (ruta_competencia, id_juez_seleccionado, nombre_juez_seleccionado)
         if item_tags and len(item_tags) == 3 and item_values and item_values[0] != "-":
             ruta_competencia, id_juez_seleccionado, nombre_juez_seleccionado = item_tags
-            # club_juez_seleccionado se obtiene de item_values
             club_juez_seleccionado = item_values[1] # Ajustado índice
             
             self.selected_juez_info = {
@@ -153,16 +150,12 @@ class JuezLoginScreen:
             messagebox.showinfo("Juez Seleccionado", 
                                 f"Juez: {nombre_juez_seleccionado}\nID: {id_juez_seleccionado}\nClub: {club_juez_seleccionado}\nCompetencia: {os.path.basename(ruta_competencia)}", 
                                 parent=self.top_level)
-            # Aquí se abriría la siguiente pantalla para el juez
-            # Por ahora, cerramos esta y podríamos pasar self.selected_juez_info
             self.abrir_menu_principal_juez()
         else:
             messagebox.showwarning("Selección Inválida", "Por favor, seleccione un juez específico, no una competencia.", parent=self.top_level)
 
     def abrir_menu_principal_juez(self):
         if self.selected_juez_info:
-            # Importar JuezMainScreen aquí para evitar dependencia circular a nivel de módulo si fuera el caso
-            # y porque solo se necesita en este punto.
             from .juez_main_screen import JuezMainScreen 
             self.top_level.withdraw() # Ocultar la pantalla de login
             JuezMainScreen(self.root, self.selected_juez_info, self) # Pasar self como login_screen_instance
@@ -171,10 +164,6 @@ class JuezLoginScreen:
 
     def cerrar_ventana(self):
         self.top_level.destroy()
-        # Si esta pantalla fue llamada desde otra, se podría reactivar la anterior
-        # if self.calling_instance:
-        #     self.calling_instance.reactivate()
-        # Si esta ventana se cierra (ej. por la 'X'), y es la que maneja la app principal, cerrar todo.
         if self.root.winfo_exists(): # Asegurarse que la raíz existe
              self.root.destroy() 
 
@@ -184,42 +173,3 @@ class JuezLoginScreen:
         self.top_level.state('zoomed')
         self.top_level.grab_set()
         self.selected_juez_info = None # Resetear selección
-        # Opcional: recargar jueces si pudieran haber cambiado, aunque no es común desde el menú de juez.
-        # self.cargar_competencias_y_jueces()
-
-if __name__ == '__main__':
-    # Crear el directorio data_storage si no existe para pruebas
-    if not os.path.exists(DATA_STORAGE_PATH):
-        os.makedirs(DATA_STORAGE_PATH)
-        print(f"Directorio '{DATA_STORAGE_PATH}' creado para pruebas.")
-        # Crear algunos archivos JSON de ejemplo para probar
-        ejemplo_comp1 = {
-            "nombre": "Torneo de Primavera",
-            "fecha": "2024-05-10",
-            "lugar": "Gimnasio Central",
-            "jueces": [
-                {"id_juez": "J001", "nombre": "Ana Pérez", "club": "Club Sol Naciente"},
-                {"id_juez": "J002", "nombre": "Luis García", "club": "Dojo Imperial"}
-            ],
-            "categorias": []
-        }
-        ejemplo_comp2 = {
-            "nombre": "Copa Invierno",
-            "fecha": "2024-11-20",
-            "lugar": "Estadio Norte",
-            "jueces": [
-                {"id_juez": "J003", "nombre": "Sofia Torres", "club": "Academia Bushido"}
-            ],
-            "categorias": []
-        }
-        with open(os.path.join(DATA_STORAGE_PATH, "torneo_primavera.json"), 'w', encoding='utf-8') as f:
-            json.dump(ejemplo_comp1, f, indent=4)
-        with open(os.path.join(DATA_STORAGE_PATH, "copa_invierno.json"), 'w', encoding='utf-8') as f:
-            json.dump(ejemplo_comp2, f, indent=4)
-        with open(os.path.join(DATA_STORAGE_PATH, "torneo_sin_jueces.json"), 'w', encoding='utf-8') as f:
-            json.dump({"nombre": "Torneo Vacío", "jueces": []}, f, indent=4)
-
-    root_test = tk.Tk()
-    root_test.withdraw()  # Ocultar la ventana raíz principal de Tkinter
-    app = JuezLoginScreen(root_test)
-    root_test.mainloop()

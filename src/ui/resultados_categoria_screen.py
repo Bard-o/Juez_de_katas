@@ -130,9 +130,6 @@ class ResultadosCategoriaScreen:
                 if nombre_tecnica not in tecnicas_scores_by_judge:
                     tecnicas_scores_by_judge[nombre_tecnica] = {f"Juez {i+1}": "N/A" for i in range(5)} # Initialize for 5 judges
                 
-                # Find the correct judge column based on judge_id (assuming judge_id 1-5 maps to Juez 1-5)
-                # This assumes judge_ids are sequential and start from 1 for simplicity in display
-                # A more robust solution would map judge_id to actual judge names/columns dynamically
                 if 1 <= juez_id <= 5:
                     tecnicas_scores_by_judge[nombre_tecnica][f"Juez {juez_id}"] = tecnica_eval['puntaje_asignado_juez']
 
@@ -166,32 +163,3 @@ class ResultadosCategoriaScreen:
         elif self.root and self.root.winfo_exists(): # Fallback if admin_menu_instance is not as expected
              self.root.deiconify()
 
-if __name__ == "__main__":
-    # Example usage for testing
-    root_test = tk.Tk()
-    root_test.withdraw()
-
-    # Mock admin_menu_instance
-    class MockAdminMenu:
-        def __init__(self, r):
-            self.root = r
-    mock_admin = MockAdminMenu(root_test)
-
-    # Load test data from the provided JSON structure
-    test_data_path = "c:/Users/pc/Documents/2.Universidad/2025-1/PRG-IV/Proyecto_Final/data_storage/torneo_prueba_0.json"
-    with open(test_data_path, 'r', encoding='utf-8') as f:
-        full_competencia_data = json.load(f)
-
-    # Find a category with evaluations to test
-    test_category = None
-    for category in full_competencia_data.get('categorias', []):
-        if category.get('nombre_categoria') == 'Katame Mayores': # Assuming this category exists and has data
-            test_category = category
-            break
-
-    if test_category:
-        app = ResultadosCategoriaScreen(root_test, mock_admin, test_data_path, test_category)
-        root_test.mainloop()
-    else:
-        print("Test category 'Katame Mayores' not found in the provided JSON data.")
-        root_test.destroy()

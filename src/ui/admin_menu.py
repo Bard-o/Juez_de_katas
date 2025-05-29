@@ -47,20 +47,17 @@ class AdminMenu:
                                command=self.abrir_lista_competencias, style="TButton", width=30)
         btn_abrir.pack(pady=20)
 
-        # Configurar para que los elementos dentro de content_container se centren si el contenedor es más grande
-        content_container.columnconfigure(0, weight=1) # No estrictamente necesario si solo usamos pack para centrar botones_frame
-        # content_container.rowconfigure(0, weight=1) # Para el título
-        # content_container.rowconfigure(1, weight=1) # Para botones_frame, si se usa grid
+
+        content_container.columnconfigure(0, weight=1) 
+        
 
     def abrir_crear_competencia(self):
         self.root.withdraw() # Ocultar la ventana principal
-        CrearCompetenciaScreen(self.root, self) # Pasar self.root y la instancia actual
-        # La ventana CrearCompetenciaScreen se encargará de volver a mostrar el menú principal al cerrarse.
+        CrearCompetenciaScreen(self.root, self) 
 
     def abrir_lista_competencias(self):
         self.root.withdraw() # Ocultar la ventana principal
-        ListaCompetenciasScreen(self.root, self) # Pasar self.root y la instancia actual
-        # La ventana ListaCompetenciasScreen se encargará de volver a mostrar el menú principal al cerrarse.
+        ListaCompetenciasScreen(self.root, self) 
 
 if __name__ == "__main__":
     root = tk.Tk()
