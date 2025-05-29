@@ -102,7 +102,7 @@ class CrearParejaScreen:
             "nombre_participante2": nombre_p2,
             "club": club,
             "puntaje_total": 0,
-            "errores_tecnicas": {}
+            "evaluaciones_jueces": [] # Inicializar como lista vacía para las evaluaciones
         }
 
         categoria_encontrada = False

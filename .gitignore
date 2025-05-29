@@ -1,5 +1,5 @@
 **/__pycache__/ 
 venv/
-data_storage/
-
+#data_storage/
+Proyecto final PRG IV.pdf
 src/ui/Tkinter.py

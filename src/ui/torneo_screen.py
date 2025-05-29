@@ -81,6 +81,11 @@ class TorneoScreen:
         btn_add_juez = ttk.Button(botones_frame, text="Añadir Juez", command=self.abrir_pantalla_añadir_juez)
         btn_add_juez.pack(side=tk.LEFT)
 
+
+
+        self.btn_ver_resultados = ttk.Button(botones_frame, text="Ver Resultados de Categoría", command=self.abrir_pantalla_resultados_categoria, state=tk.DISABLED)
+        self.btn_ver_resultados.pack(side=tk.RIGHT)
+
         # PanedWindow para dividir Jueces y Categorías - ahora dentro de content_container
         paned_window = ttk.PanedWindow(content_container, orient=tk.HORIZONTAL)
         # El paned_window se expandirá gracias a la configuración de row/columnconfigure en content_container
@@ -126,6 +131,11 @@ class TorneoScreen:
         self.tree_categorias.pack(expand=True, fill=tk.BOTH)
         self._cargar_categorias_y_parejas()
 
+        # Bind selection event to enable/disable the results button
+        self.tree_categorias.bind("<<TreeviewSelect>>", self._on_categoria_select)
+
+
+
     def _cargar_jueces(self):
         for i in self.tree_jueces.get_children():
             self.tree_jueces.delete(i)
@@ -163,7 +173,7 @@ class TorneoScreen:
                     club_pareja = pareja_data.get("club", "N/A")
                     id_pareja = pareja_data.get("id_pareja", "N/A")
                     self.tree_categorias.insert(cat_id, tk.END, text=f"    👤 {nombre_pareja}", 
-                                                values=(club_pareja, id_pareja))
+                                                values=(club_pareja, id_pareja), tags=('pareja',))
 
     def abrir_pantalla_añadir_categoria(self):
         # Llama a la pantalla para añadir categoría
@@ -205,6 +215,43 @@ class TorneoScreen:
             self.admin_menu_instance.root.deiconify()
         elif self.root and self.root.winfo_exists(): # Fallback si admin_menu_instance no es el esperado
              self.root.deiconify()
+
+    def _on_categoria_select(self, event):
+        selected_item = self.tree_categorias.focus()
+        if selected_item:
+            # Check if the selected item is a category (not a pair)
+            item_tags = self.tree_categorias.item(selected_item, "tags")
+            if 'pareja' not in item_tags:
+                self.btn_ver_resultados.config(state=tk.NORMAL)
+            else:
+                self.btn_ver_resultados.config(state=tk.DISABLED)
+        else:
+            self.btn_ver_resultados.config(state=tk.DISABLED)
+
+    def abrir_pantalla_resultados_categoria(self):
+        selected_item = self.tree_categorias.focus()
+        if not selected_item:
+            messagebox.showwarning("Selección Requerida", "Por favor, seleccione una categoría para ver sus resultados.", parent=self.top_level)
+            return
+
+        # Get the category data
+        category_id = selected_item
+        category_name = self.tree_categorias.item(category_id, "text").replace("📁 ", "")
+        category_type_kata = self.tree_categorias.item(category_id, "values")[0]
+
+        selected_category_data = None
+        for cat_data in self.competencia_data["categorias"] if self.competencia_data else []:
+            if cat_data.get("nombre_categoria") == category_name and cat_data.get("tipo_kata") == category_type_kata:
+                selected_category_data = cat_data
+                break
+
+        if selected_category_data:
+            # Import and open the new results screen
+            from .resultados_categoria_screen import ResultadosCategoriaScreen
+            ResultadosCategoriaScreen(self.top_level, self.admin_menu_instance, self.competencia_path, selected_category_data)
+            self.top_level.withdraw() # Hide current window
+        else:
+            messagebox.showerror("Error", "No se pudo encontrar los datos de la categoría seleccionada.", parent=self.top_level)
 
 if __name__ == "__main__":
     # Para probar esta pantalla de forma aislada
